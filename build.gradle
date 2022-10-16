@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+
+group 'org.todo'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+ext {
+    junit = "5.8.1"
+    restAssured = "5.2.0"
+    lombok = "1.18.24"
+    slf4j = "2.0.3"
+    jackson = "2.13.4.2"
+}
+
+dependencies {
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junit}"
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junit}"
+    testCompileOnly group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "${junit}"
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: "${restAssured}"
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: "${lombok}"
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: "${slf4j}"
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "${jackson}"
+}
+
+
+test {
+    useJUnitPlatform()
+}
